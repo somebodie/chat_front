@@ -1,1 +1,1 @@
-angular.module('ChattyBlog', [ui.router]);
+angular.module('ChattyBlog', []);
