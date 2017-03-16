@@ -5,13 +5,46 @@
     <title>Chatty Blog</title>
     <!-- Angular Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-    <script src="js/app.js"></script>
+    <!-- UI-Router -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    <!-- Router -->
+    <script src='js/router.js'></script>
+    <!-- Factories -->
+    <script src="/js/factories/auth_interceptor.js"></script>
+    <script src="/js/factories/auth_token_factory.js"></script>
+    <!-- Controllers -->
     <script src='js/controllers/HomeController.js'></script>
     <script src='js/controllers/UserController.js'></script>
     <script src='js/controllers/BlogController.js'></script>
     <script src='js/controllers/CommentController.js'></script>
+    <!-- App -->
+    <script src="js/app.js"></script>
   </head>
-  <body>
+  <body ng-controller='HomeController as home'>
 {{2+2}}
+
+<h1>SIGN UP</h1>
+<div class="signup">
+  <form ng-submit="home.signup(userPass)">
+    <input type="text" ng-model= "userPass.name" placeholder="name">
+    <input type="text" ng-model="userPass.user_name" placeholder="user name">
+    <input type="email" ng-model="userPass.email" placeholder="email">
+    <input type="password" ng-model="userPass.password" placeholder="password">
+    <input type="checkbox" ng-model='userPass.admin' ng-hide='admin'>
+  <button type="submit">login</button>
+</form>
+</div>
+
+<h1>LOG IN</h1>
+<div class="login">
+  <form ng-submit="home.login(userPass)">
+      <input type="text" ng-model="userPass.email" placeholder="email">
+      <input type="password" ng-model="userPass.password" placeholder="password">
+      <input type="submit" value="login">
+  </form>
+</div>
+
+<h1>LOG OUT</h1>
+<button type="button" name="logout" ng-click='home.logout()'>Log Off!</button>
   </body>
 </html>
