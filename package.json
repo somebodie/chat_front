@@ -1,0 +1,21 @@
+{
+  "name": "chat_front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somebodie/chat_front.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/somebodie/chat_front/issues"
+  },
+  "homepage": "https://github.com/somebodie/chat_front#readme"
+}
