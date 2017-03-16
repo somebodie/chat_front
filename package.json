@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/somebodie/chat_front/issues"
   },
-  "homepage": "https://github.com/somebodie/chat_front#readme"
+  "homepage": "https://github.com/somebodie/chat_front#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
