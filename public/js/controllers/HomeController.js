@@ -13,7 +13,8 @@ function HomeController($http, $state, $scope, $rootScope, AuthTokenFactory) {
         .then(function(response) {
             AuthTokenFactory.setToken(response.data.token)
             });
-      // console.log("This is me login in" + userPass);
+      console.log("This is me login in");
+      console.log(userPass);
     }
 
     function logout() {

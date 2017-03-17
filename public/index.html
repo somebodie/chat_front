@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html ng-app='ChattyBlog'>
-  <head>
+
+<head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chatty Blog</title>
     <!-- Angular Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
@@ -19,32 +21,87 @@
     <script src='js/controllers/CommentController.js'></script>
     <!-- App -->
     <script src="js/app.js"></script>
-  </head>
-  <body ng-controller='HomeController as home'>
-{{2+2}}
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/master.css">
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
 
-<h1>SIGN UP</h1>
-<div class="signup">
-  <form ng-submit="home.signup(userPass)">
-    <input type="text" ng-model= "userPass.name" placeholder="name">
-    <input type="text" ng-model="userPass.user_name" placeholder="user name">
-    <input type="email" ng-model="userPass.email" placeholder="email">
-    <input type="password" ng-model="userPass.password" placeholder="password">
-    <input type="checkbox" ng-model='userPass.admin' ng-hide='admin'>
-  <button type="submit">login</button>
-</form>
-</div>
+<body>
+    <header>
+        <nav>
+            <img src="/images/logo4.jpg" alt="chatty blog" class="logo">
+        </nav>
+    </header>
+    <ui-view></ui-view>
+    <footer>
+        <!-- SignUp modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Sign Up</button>
 
-<h1>LOG IN</h1>
-<div class="login">
-  <form ng-submit="home.login(userPass)">
-      <input type="text" ng-model="userPass.email" placeholder="email">
-      <input type="password" ng-model="userPass.password" placeholder="password">
-      <input type="submit" value="login">
-  </form>
-</div>
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Join the Community!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="signup">
+                            <form ng-submit="home.signup(userPass)">
+                                <input type="text" ng-model="userPass.name" placeholder="name">
+                                <input type="text" ng-model="userPass.user_name" placeholder="user name">
+                                <input type="email" ng-model="userPass.email" placeholder="email">
+                                <input type="password" ng-model="userPass.password" placeholder="password">
+                                <input type="checkbox" ng-model='userPass.admin' ng-hide='admin'>
+                                <button type="submit">login</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="home.signup(userPass)">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
 
-<h1>LOG OUT</h1>
-<button type="button" name="logout" ng-click='home.logout()'>Log Off!</button>
-  </body>
+        <!-- Log In modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Log In</button>
+
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Welcome Back!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form ng-submit="home.login(userPass)">
+                          <div class="login">
+                            <form ng-submit="home.login(userPass)">
+                                <input type="text" ng-model="userPass.email" placeholder="email">
+                                <input type="password" ng-model="userPass.password" placeholder="password">
+                                <input type="submit" value="login">
+                            </form>
+                          </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="home.login(userPass)">Let's Hear You</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" name="logout" ng-click='home.logout()'>Log Off!</button>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+
 </html>

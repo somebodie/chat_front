@@ -14,6 +14,7 @@ function ChatRouter($stateProvider, $urlRouterProvider){
 
   $stateProvider
     .state('index', {
-      url: '/'
+      url: '/',
+      controller: 'HomeController as home' 
     })
 }
