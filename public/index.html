@@ -22,7 +22,9 @@
   </head>
   <body ng-controller='HomeController as home'>
 {{2+2}}
-
+<h1>PARTIAL BELOW</h1>
+<ui-view></ui-view>
+<h1>PARITAL ABOVE</h1>
 <h1>SIGN UP</h1>
 <div class="signup">
   <form ng-submit="home.signup(userPass)">
