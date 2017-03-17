@@ -1,0 +1,31 @@
+<!-- TODO: Should only be accesed by Admin Users ONLY-->
+
+<!-- FIXME: clear when done populate when edited -->
+<div class="newBlog">
+  <form class="newBlog" ng-submit='blog.createBlog(newBlog)'>
+    <input type="text" ng-model='newBlog.title' placeholder="title" required>
+    <textarea ng-model='newBlog.body' rows="40" cols="100"></textarea>
+    <!-- <input type="text" ng-model='newBlog.author = {{home.currentUser}}' placeholder="title"> -->
+    <!-- <input type="url" ng-model='newBlog.media' accept="image/video/*"> -->
+    <input type="submit" name="" value="SUBMIT">
+    <!-- <button type="reset" name="button">RESET</button> -->
+  </form>
+  <!-- TODO: :title, :body, :author, :media, :user_id  -->
+</div>
+
+HOME: {{home}}
+
+
+<!-- TODO: NG=Hide? I want to be able to show all work once completed and allow click on work to edit. -->
+<div class="Blogs">
+<button type="button" name="button" ng-click='blog.showBlog()'>Show</button>
+<!-- When show function runs the following runs -->
+  <div ng-repeat='article in blog.blogs' class="articles">
+    Title: {{article.title}}
+    By: {{article.author}}
+    <img ng-src="{{article.media}}" alt="{{article.title}}">
+    Body: {{article.body}}
+    <button type="button" name="delete">DELETE</button>
+    <button type="button" name="button" ng-click='blog.updateBlog()'>Update</button>
+  </div>
+</div>

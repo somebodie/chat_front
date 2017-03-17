@@ -5,8 +5,12 @@ angular.module('ChattyBlog')
 function BlogController($http, $state, $scope, $rootScope) {
     var self = this;
     var server = 'https://still-sea-45460.herokuapp.com';
-    console.log("LET'S BLOG THIS!");
+    // console.log("LET'S BLOG THIS!");
     var blogs = {};
+
+    $rootScope.$on('adminLoggedIn', function (event, admin) {
+      console.log(admin); // 'currentUser'
+    });
 
     // blogs GET    /blogs(.:format)                       blogs#index
     function showBlog() {
@@ -15,16 +19,23 @@ function BlogController($http, $state, $scope, $rootScope) {
       .then(function (response) {
         // console.log(response);
         self.blogs = response.data
-        console.log(self.blogs);
+        // console.log(self.blogs);
       })
     }
 
     //        POST   /blogs(.:format)                       blogs#create
-    function createBlog() {
+    function createBlog(newBlog) {
+      // console.log(newBlog);
       console.log("LET'S START BLOGGING!");
+      $http.post(`${server}/blogs`, newBlog)
+        .then(function (response) {
+          console.log(newBlog);
+          console.log(response);
+        })
     }
 
     self.showBlog = showBlog;
+    self.createBlog = createBlog;
 }
 
 //   blog GET    /blogs/:id(.:format)                   blogs#show

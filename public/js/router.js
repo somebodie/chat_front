@@ -22,4 +22,9 @@ function ChatRouter($stateProvider, $urlRouterProvider){
       templateUrl: '/partials/home.html',
       controller: 'BlogController as blog'
     })
+    .state('articles', {
+      url: '/admin/articles',
+      templateUrl: '/partials/articles.html',
+      controller: 'BlogController as blog'
+    })
 }
