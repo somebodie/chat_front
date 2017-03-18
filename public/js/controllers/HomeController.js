@@ -15,7 +15,7 @@ function HomeController($http, $state, $scope, $rootScope, AuthTokenFactory) {
             console.log(response);
             $scope.$parent.$broadcast('userLoggedIn', {currentUser: response.data.user});
             if (response.data.user.admin) {
-              $rootScope.$broadcast('adminLoggedIn', {admin: response.data.user});
+              $rootScope.$broadcast('adminLoggedIn', {admin: response.data.user, token: response.data.token});
               console.log('ADMIN LOGGED IN!');
             }
             });
@@ -26,6 +26,7 @@ function HomeController($http, $state, $scope, $rootScope, AuthTokenFactory) {
     function logout() {
       AuthTokenFactory.setToken();      // $state.go(''); FIXME: Decided on where user goes after login, prefer no where so may leave as is
         $scope.$emit('userLoggedOut');
+        console.log('logged off');
     }
 
     function signup(userPass) {

@@ -1,5 +1,5 @@
 angular.module('ChattyBlog')
-    .controller('BlogController', BlogController);
+    .controller('BlogController', BlogController)
 
 
 function BlogController($http, $state, $scope, $rootScope) {
@@ -7,10 +7,19 @@ function BlogController($http, $state, $scope, $rootScope) {
     var server = 'https://still-sea-45460.herokuapp.com';
     // console.log("LET'S BLOG THIS!");
     var blogs = {};
+    // IDEA: SELF.ADMIN = false until admin equals user
+    //  then ng path to block routes?
 
     $rootScope.$on('adminLoggedIn', function (event, admin) {
       console.log(admin); // 'currentUser'
+       self.admin = admin.admin;
+      //  console.log(currentAdmin);
     });
+
+    $scope.$on('userLoggedOut', function(event, data) {
+    self.admin = null;
+    });
+
 
     // blogs GET    /blogs(.:format)                       blogs#index
     function showBlog() {
@@ -26,16 +35,22 @@ function BlogController($http, $state, $scope, $rootScope) {
     //        POST   /blogs(.:format)                       blogs#create
     function createBlog(newBlog) {
       // console.log(newBlog);
+      // console.log(currentAdmin);
+      newBlog.author = self.admin.name;
+      newBlog.user_id = self.admin.id;
       console.log("LET'S START BLOGGING!");
-      $http.post(`${server}/blogs`, newBlog)
+      // self.newBlog.media = new FileUploader(newBlog.media);
+      // https://github.com/nervgh/angular-file-upload/wiki/Introduction
+      $http.post(`${server}/blogs`, { blog: newBlog})
         .then(function (response) {
-          console.log(newBlog);
+          console.log('I SAVED!');
           console.log(response);
         })
     }
 
     self.showBlog = showBlog;
     self.createBlog = createBlog;
+    self.deleteBlog = deleteBlog;
 }
 
 //   blog GET    /blogs/:id(.:format)                   blogs#show

@@ -5,16 +5,15 @@
   <form class="newBlog" ng-submit='blog.createBlog(newBlog)'>
     <input type="text" ng-model='newBlog.title' placeholder="title" required>
     <textarea ng-model='newBlog.body' rows="40" cols="100"></textarea>
-    <!-- <input type="text" ng-model='newBlog.author = {{home.currentUser}}' placeholder="title"> -->
-    <!-- <input type="url" ng-model='newBlog.media' accept="image/video/*"> -->
+    <input type="url" ng-model='newBlog.media' placeholder="Link to your image">
+    <!-- <input type="file" ng-model='newBlog.media' nv-file-select uploader="uploader" accept="image/video/*"> -->
     <input type="submit" name="" value="SUBMIT">
     <!-- <button type="reset" name="button">RESET</button> -->
   </form>
   <!-- TODO: :title, :body, :author, :media, :user_id  -->
 </div>
 
-HOME: {{home}}
-
+<br> Blog: {{blog}}
 
 <!-- TODO: NG=Hide? I want to be able to show all work once completed and allow click on work to edit. -->
 <div class="Blogs">
