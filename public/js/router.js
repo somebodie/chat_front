@@ -27,4 +27,9 @@ function ChatRouter($stateProvider, $urlRouterProvider){
       templateUrl: '/partials/articles.html',
       controller: 'BlogController as blog'
     })
+    .state('blogs', {
+      url: '/blogs',
+      templateUrl: '/partials/entry.html',
+      controller: 'CommentController as comments'
+    })
 }

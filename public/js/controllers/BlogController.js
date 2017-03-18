@@ -48,9 +48,14 @@ function BlogController($http, $state, $scope, $rootScope) {
         })
     }
 
+    //   blog GET    /blogs/:id(.:format)                   blogs#show
+    function getBlog() {
+      console.log('I SEE YOU!');
+    }
+
     self.showBlog = showBlog;
     self.createBlog = createBlog;
-    self.deleteBlog = deleteBlog;
+    self = deleteBlog;
 }
 
 //   blog GET    /blogs/:id(.:format)                   blogs#show
