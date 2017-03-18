@@ -19,7 +19,7 @@ function BlogController($http, $state, $scope, $rootScope) {
     });
 
     showBlog()
-    
+
     // blogs GET    /blogs(.:format)                       blogs#index
     function showBlog() {
       // console.log('SHOWING THIS!');
@@ -54,7 +54,9 @@ function BlogController($http, $state, $scope, $rootScope) {
       $http.get(`${server}/blogs/${id}`)
         .then(function (response) {
           console.log(response.data);
-          self.blogs = response.data
+          // self.blogs = response.data
+          // can't use self.blogs
+          // will use for search menu
             // $state.go('article', {article: response.data}) //FIXME: Make sure information shows on partial
         })
     }
