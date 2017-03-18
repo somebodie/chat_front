@@ -22,14 +22,26 @@ function ChatRouter($stateProvider, $urlRouterProvider){
       templateUrl: '/partials/home.html',
       controller: 'BlogController as blog'
     })
-    .state('articles', {
-      url: '/admin/articles',
-      templateUrl: '/partials/articles.html',
-      controller: 'BlogController as blog'
-    })
     .state('blogs', {
       url: '/blogs',
-      templateUrl: '/partials/entry.html',
+      templateUrl: '/partials/users/entry.html',
       controller: 'CommentController as comments'
+    })
+    // **ADMIN STATES**
+    .state('list', {
+      url: '/admin/articles',
+      templateUrl: '/partials/admin/list.html',
+      controller: 'BlogController as blog'
+    })
+    .state('article', {
+      url: '/:id',
+      templateUrl: '/partials/admin/article.html',
+      controller: 'BlogController as blog',
+      parent: 'list'
+    })
+    .state('new',{
+      url: 'admin/articles/new',
+      templateUrl: 'partials/admin/new.html',
+      controller: 'BlogController as blog'
     })
 }

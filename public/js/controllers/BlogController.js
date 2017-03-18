@@ -5,9 +5,8 @@ function BlogController($http, $state, $scope, $rootScope) {
     var self = this;
     var server = 'https://still-sea-45460.herokuapp.com';
     // console.log("LET'S BLOG THIS!");
-    var blogs = {};
-    // IDEA: SELF.ADMIN = false until admin equals user
-    //  then ng path to block routes?
+    self.blogs = {};
+    // self.update = false; IDEA: hide update until called
 
     $rootScope.$on('adminLoggedIn', function (event, admin) {
       console.log(admin); // 'currentUser'
@@ -19,7 +18,8 @@ function BlogController($http, $state, $scope, $rootScope) {
     self.admin = null;
     });
 
-
+    showBlog()
+    
     // blogs GET    /blogs(.:format)                       blogs#index
     function showBlog() {
       // console.log('SHOWING THIS!');
@@ -44,22 +44,46 @@ function BlogController($http, $state, $scope, $rootScope) {
         .then(function (response) {
           console.log('I SAVED!');
           console.log(response);
+          newBlog = {}
         })
     }
 
     //   blog GET    /blogs/:id(.:format)                   blogs#show
-    function getBlog() {
+    function getBlog(id) {
       console.log('I SEE YOU!');
+      $http.get(`${server}/blogs/${id}`)
+        .then(function (response) {
+          console.log(response.data);
+          self.blogs = response.data
+            // $state.go('article', {article: response.data}) //FIXME: Make sure information shows on partial
+        })
     }
 
     //        PATCH  /blogs/:id(.:format)                   blogs#update
-    function updateBlog() {
+    function updateBlog(article) {
       console.log("OOPS! LET'S CHANGE THAT");
+      // self.update = true; FIXME: make sure that I want to hide
+      console.log(article);
+      self.article = article;
+      $http.patch(`${server}/blogs/:id`)
+        .then(function (response) {
+          console.log(response);
+          console.log('GOT YOU!');
+        })
     }
 
+
+
     //        DELETE /blogs/:id(.:format)                   blogs#destroy
-    function deleteBlog() {
+    function deleteBlog(id) {
       console.log('BYE BLOG!');
+      $http.delete(`${server}/blogs/${id}`)
+        .then(function (response) {
+          console.log('DELETED!');
+          console.log(response);
+        })
+        // $state.go('articles')
+        // FIXME: Make sure that remainder of blogs show after delete
     }
 
     self.showBlog = showBlog;

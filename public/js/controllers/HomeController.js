@@ -5,6 +5,7 @@ angular.module('ChattyBlog')
 function HomeController($http, $state, $scope, $rootScope, AuthTokenFactory) {
     var self = this;
     var server = 'https://still-sea-45460.herokuapp.com';
+    self.control = false; //until admin user.admin is true
 
     function login(userPass) {
       $http.post(`${server}/users/login`, {
@@ -17,6 +18,7 @@ function HomeController($http, $state, $scope, $rootScope, AuthTokenFactory) {
             if (response.data.user.admin) {
               $rootScope.$broadcast('adminLoggedIn', {admin: response.data.user, token: response.data.token});
               console.log('ADMIN LOGGED IN!');
+              self.control = true;
             }
             });
       console.log("This is me login in");
@@ -27,6 +29,8 @@ function HomeController($http, $state, $scope, $rootScope, AuthTokenFactory) {
       AuthTokenFactory.setToken();      // $state.go(''); FIXME: Decided on where user goes after login, prefer no where so may leave as is
         $scope.$emit('userLoggedOut');
         console.log('logged off');
+        self.control = false;
+      $state.go('home')
     }
 
     function signup(userPass) {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app='ChattyBlog'>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Chatty Blog</title>
     <!-- Angular Script -->
@@ -19,34 +20,51 @@
     <script src='js/controllers/CommentController.js'></script>
     <!-- App -->
     <script src="js/app.js"></script>
-  </head>
-  <body ng-controller='HomeController as home'>
-{{2+2}}
-<h1>PARTIAL BELOW</h1>
-<ui-view></ui-view>
-<h1>PARITAL ABOVE</h1>
-<h1>SIGN UP</h1>
-<div class="signup">
-  <form ng-submit="home.signup(userPass)">
-    <input type="text" ng-model= "userPass.name" placeholder="name">
-    <input type="text" ng-model="userPass.user_name" placeholder="user name">
-    <input type="email" ng-model="userPass.email" placeholder="email">
-    <input type="password" ng-model="userPass.password" placeholder="password">
-    <input type="checkbox" ng-model='userPass.admin' ng-hide='admin'>
-  <button type="submit">login</button>
-</form>
-</div>
+</head>
 
-<h1>LOG IN</h1>
-<div class="login">
-  <form ng-submit="home.login(userPass)">
-      <input type="text" ng-model="userPass.email" placeholder="email">
-      <input type="password" ng-model="userPass.password" placeholder="password">
-      <input type="submit" value="login">
-  </form>
-</div>
+<body ng-controller='HomeController as home'>
+    <header>
+        <nav>
+            <button type="menu" name="menu">Menu</button>
+            <menu>
+                <menuitem type="command" label="Save">
+                <div class="adminsLinks" ng-show='home.control'>
+                    <a ui-sref="list">Admin's List</a>
+                </div>
+            </menu>
+            <!-- TODO: SEARCH BAR: https://docs.angularjs.org/api/ng/filter/filter -->
+        </nav>
+    </header>
+    <main>
+        <h1>PARTIAL BELOW</h1>
+        <ui-view></ui-view>
+        <h1>PARITAL ABOVE</h1>
+        <h1>SIGN UP</h1>
+    </main>
+    <footer>
+        <div class="signup">
+            <form ng-submit="home.signup(userPass)">
+                <input type="text" ng-model="userPass.name" placeholder="name">
+                <input type="text" ng-model="userPass.user_name" placeholder="user name">
+                <input type="email" ng-model="userPass.email" placeholder="email">
+                <input type="password" ng-model="userPass.password" placeholder="password">
+                <input type="checkbox" ng-model='userPass.admin' ng-hide='admin'>
+                <button type="submit">login</button>
+            </form>
+        </div>
 
-<h1>LOG OUT</h1>
-<button type="button" name="logout" ng-click='home.logout()'>Log Off!</button>
-  </body>
+        <h1>LOG IN</h1>
+        <div class="login">
+            <form ng-submit="home.login(userPass)">
+                <input type="text" ng-model="userPass.email" placeholder="email">
+                <input type="password" ng-model="userPass.password" placeholder="password">
+                <input type="submit" value="login">
+            </form>
+        </div>
+
+        <h1>LOG OUT</h1>
+        <button type="button" name="logout" ng-click='home.logout()'>Log Off!</button>
+</body>
+</footer>
+
 </html>
