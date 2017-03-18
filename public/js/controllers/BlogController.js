@@ -1,7 +1,6 @@
 angular.module('ChattyBlog')
     .controller('BlogController', BlogController)
 
-
 function BlogController($http, $state, $scope, $rootScope) {
     var self = this;
     var server = 'https://still-sea-45460.herokuapp.com';
@@ -53,12 +52,19 @@ function BlogController($http, $state, $scope, $rootScope) {
       console.log('I SEE YOU!');
     }
 
+    //        PATCH  /blogs/:id(.:format)                   blogs#update
+    function updateBlog() {
+      console.log("OOPS! LET'S CHANGE THAT");
+    }
+
+    //        DELETE /blogs/:id(.:format)                   blogs#destroy
+    function deleteBlog() {
+      console.log('BYE BLOG!');
+    }
+
     self.showBlog = showBlog;
     self.createBlog = createBlog;
-    self = deleteBlog;
+    self.getBlog = getBlog;
+    self.updateBlog = updateBlog;
+    self.deleteBlog = deleteBlog;
 }
-
-//   blog GET    /blogs/:id(.:format)                   blogs#show
-//        PATCH  /blogs/:id(.:format)                   blogs#update
-//        PUT    /blogs/:id(.:format)                   blogs#update
-//        DELETE /blogs/:id(.:format)                   blogs#destroy

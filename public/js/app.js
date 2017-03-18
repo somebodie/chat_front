@@ -1,6 +1,6 @@
 angular.module('ChattyBlog')
   .controller('HomeController', HomeController)
-  // .controller('BlogController', BlogController)
-  // .controller('CommentController', CommentController)
+  .controller('BlogController', BlogController)
+  .controller('CommentController', CommentController)
   .factory('AuthInterceptor', AuthInterceptor)
   .factory('AuthTokenFactory', AuthTokenFactory)
