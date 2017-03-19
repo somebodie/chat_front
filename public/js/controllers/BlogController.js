@@ -47,15 +47,16 @@ function BlogController($http, $state, $scope, $rootScope) {
     }
 
     //   blog GET    /blogs/:id(.:format)                   blogs#show
-    // function getBlog() {
-    //   console.log('I SEE YOU!');
-    //   $http.get(`${server}/blogs/${id}`)
-    //     .then(function (response) {
-    //       console.log(response);
-    //
-    //       $state.go('article')
-    //     })
+    function getBlog(id) {
+      console.log('I SEE YOU!');
+      $http.get(`${server}/blogs/${id}`)
+        .then(function (response) {
+          console.log(response);
+
+          $state.go('article', {article_id: id})
+        })
     // } FIXME figure out how to get indiviudal blog to show on page
+  }
 
     //        PATCH  /blogs/:id(.:format)                   blogs#update
     function updateBlog(article) {

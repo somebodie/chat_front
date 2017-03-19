@@ -29,14 +29,14 @@ function ChatRouter($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: 'BlogController as blog',
         })
         .state('article', {
-            url: 'blog/:article_id', //https://github.com/angular-ui/ui-router/issues/928
+            url: '/blog/article/:article_id', //https://github.com/angular-ui/ui-router/issues/928
             templateUrl: '/partials/users/article.html',
             controller: 'BlogController as blog',
         })
         // **ADMIN STATES**
         .state('admin', {
-            url: '/admin/',
-            templateUrl: '/partials/admin/list.html',
+            url: '/admin',
+            templateUrl: '/partials/admin/admin.html',
             controller: 'BlogController as blog'
         })
         .state('new', {
@@ -44,10 +44,10 @@ function ChatRouter($stateProvider, $urlRouterProvider, $locationProvider) {
             templateUrl: 'partials/admin/new.html',
             controller: 'BlogController as blog',
             parent: 'list'
-        });
+        })
         .state('update', {
             url: '/update',
-            templateUrl: 'partials/admin/new.html',
+            templateUrl: 'partials/admin/update.html',
             controller: 'BlogController as blog',
             parent: 'list'
         });
