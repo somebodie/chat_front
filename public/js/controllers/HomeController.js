@@ -2,10 +2,11 @@ angular.module('ChattyBlog')
     .controller('HomeController', HomeController);
 
 
-function HomeController($http, $state, $scope, $rootScope, AuthTokenFactory) {
+function HomeController($http, $state, $scope, $rootScope, AuthTokenFactory, $location) {
     var self = this;
     var server = 'https://still-sea-45460.herokuapp.com';
     self.control = false; //until admin user.admin is true
+    $scope.$location = $location;
 
     function login(userPass) {
       $http.post(`${server}/users/login`, {

@@ -6,9 +6,9 @@ function authInterceptor($httpProvider) {
   $httpProvider.interceptors.push('AuthInterceptor')
 }
 
-ChatRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
+ChatRouter.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
-function ChatRouter($stateProvider, $urlRouterProvider){
+function ChatRouter($stateProvider, $urlRouterProvider, $locationProvider){
 
   $urlRouterProvider.otherwise('/home');
 
@@ -28,7 +28,6 @@ function ChatRouter($stateProvider, $urlRouterProvider){
       url: '/:article_id', //https://github.com/angular-ui/ui-router/issues/928
       templateUrl: '/partials/users/article.html',
       controller: 'BlogController as blog',
-      parent: 'blogs'
     })
     // **ADMIN STATES**
     .state('list', {
@@ -41,5 +40,10 @@ function ChatRouter($stateProvider, $urlRouterProvider){
       templateUrl: 'partials/admin/new.html',
       controller: 'BlogController as blog',
       parent: 'list'
-    })
+    });
+
+    $locationProvider.html5Mode({
+      enabled: false,
+      requireBase: false
+    });
 }
