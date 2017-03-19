@@ -31,6 +31,11 @@
                 <div class="adminsLinks" ng-show='home.control'>
                     <a ui-sref="list">Admin's List</a>
                 </div>
+                <label>Search: <input ng-model="searchText"></label>
+                <div id="searchTextResults">
+                    <div ng-repeat="article in blog.blogs | filter:searchText">
+                        <menuitem type="command" label="Save" ng-value="{{article}}">
+                    </div>
             </menu>
             <!-- TODO: SEARCH BAR: https://docs.angularjs.org/api/ng/filter/filter -->
         </nav>
