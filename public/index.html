@@ -15,7 +15,6 @@
     <script src="/js/factories/auth_token_factory.js"></script>
     <!-- Controllers -->
     <script src='js/controllers/HomeController.js'></script>
-    <script src='js/controllers/UserController.js'></script>
     <script src='js/controllers/BlogController.js'></script>
     <script src='js/controllers/CommentController.js'></script>
     <!-- App -->
@@ -25,20 +24,23 @@
 <body ng-controller='HomeController as home'>
     <header>
         <nav>
-            <button type="menu" name="menu">Menu</button>
-            <menu>
-                <menuitem type="command" label="Save">
+            <button type="menu" name="menu">Menu
+            <menu ng-controller='BlogController as blog'>
                 <div class="adminsLinks" ng-show='home.control'>
                     <a ui-sref="list">Admin's List</a>
                 </div>
                 <label>Search: <input ng-model="searchText"></label>
+                <!-- TODO: SEARCH BAR: https://docs.angularjs.org/api/ng/filter/filter -->
                 <div id="searchTextResults">
                     <div ng-repeat="article in blog.blogs | filter:searchText">
-                        <menuitem type="command" label="Save" ng-value="{{article}}">
+                      <p>Title {{article.title}}</p>
+                      <p>Author {{article.author}}</p>
+                      <!-- FIXME: get blog on selection -->
                     </div>
-                </div>          
+                </div>
+                <menuitem type="command" label="Save">
             </menu>
-            <!-- TODO: SEARCH BAR: https://docs.angularjs.org/api/ng/filter/filter -->
+            </button>
         </nav>
     </header>
     <main>

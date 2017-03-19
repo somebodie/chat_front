@@ -16,16 +16,15 @@ function ChatRouter($stateProvider, $urlRouterProvider, $locationProvider) {
         // **INDEX STATE**
         .state('index', {
             url: '/',
-            controller: 'HomeController as home'
         })
         // **USER STATES**
         .state('home', {
             url: '/home',
             templateUrl: '/partials/home.html',
-            controller: 'BlogController as blog'
+            controller: 'BlogController as blog',
         })
         .state('blogs', {
-            url: 'blog/',
+            url: '/blog',
             templateUrl: '/partials/users/blog.html',
             controller: 'BlogController as blog',
         })
@@ -35,13 +34,19 @@ function ChatRouter($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: 'BlogController as blog',
         })
         // **ADMIN STATES**
-        .state('list', {
-            url: '/admin/articles',
+        .state('admin', {
+            url: '/admin/',
             templateUrl: '/partials/admin/list.html',
             controller: 'BlogController as blog'
         })
         .state('new', {
             url: '/new',
+            templateUrl: 'partials/admin/new.html',
+            controller: 'BlogController as blog',
+            parent: 'list'
+        });
+        .state('update', {
+            url: '/update',
             templateUrl: 'partials/admin/new.html',
             controller: 'BlogController as blog',
             parent: 'list'
