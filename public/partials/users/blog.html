@@ -1,0 +1,14 @@
+<div class="blogs">
+  <label>Search: <input ng-model="searchText"></label>
+  <div id="searchTextResults">
+      <div class="articles" ng-repeat="article in blog.blogs | filter:searchText">
+          <div class="samples">
+              <!-- TODO: ng-click='blog.getBlog()' -->
+              Title: {{article.title}} By: {{article.author}}
+              <img ng-src="{{article.media}}" alt="{{article.title}}"> Written: {{article.created_at}} Updated: {{article.updated_at}} Body: {{article.body}}
+              <button ng-show='home.control' type="button" name="button" ng-click='blog.updateBlog(article); blog.update=!blog.update'>Update Blog</button>
+              <button ng-show='home.control' type="button" name="button" ng-click='blog.deleteBlog(article); blog.update=!blog.update'>Delete Blog</button>
+          </div>
+      </div>
+  </div>
+</div>

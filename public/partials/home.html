@@ -1,0 +1,10 @@
+<!-- <button type="button" name="button" ng-click='blog.showBlog()'>Show</button> -->
+<!-- When show function runs the following runs -->
+<div class="collection">
+    <h1>SLIDE SHOW</h1>
+    <div ng-repeat='article in blog.blogs' class="IMAGES" | limitTo:>
+        <!-- FIXME: To limit to "feature images and links to show" -->
+        <!-- TODO: https://docs.angularjs.org/api/ng/filter/filter -->
+        <img ng-src="{{article.media}}" alt="{{article.title}}">
+    </div>
+</div>

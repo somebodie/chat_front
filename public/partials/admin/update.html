@@ -1,0 +1,16 @@
+<!-- TODO: Parent view is admin -->
+
+<h3>UPDATE THE BLOG HERE</h3>
+<div class="updateBlog" ng-show='blog.update'>
+    <form class="" ng-click='blog.updateBlog()'>
+        <label for="title">Title</label>
+        <input type="text" name="title" ng-model='blog.blog'>
+        <label for="author">Author</label>
+        <input type="text" name="author" ng-model='blog.blog'>
+        <label for="URL">Media URL:</label>
+        <input type="url" name='url' ng-model='blog.blog'>
+        <label for="body">Body</label>
+        <input type="text" name="body" ng-model='blog.blog'>
+        <input type="submit" value="update">
+    </form>
+</div>

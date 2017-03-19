@@ -1,0 +1,110 @@
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="/images/logo4.jpg" alt="chatty blog" class="logo">
+        </nav>
+    </header>
+    <ui-view></ui-view>
+    <footer>
+        <!-- SignUp modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Sign Up</button>
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Join the Community!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="signup">
+                            <form ng-submit="home.signup(userPass)">
+                                <input type="text" ng-model="userPass.name" placeholder="name">
+                                <input type="text" ng-model="userPass.user_name" placeholder="user name">
+                                <input type="email" ng-model="userPass.email" placeholder="email">
+                                <input type="password" ng-model="userPass.password" placeholder="password">
+                                <input type="checkbox" ng-model='userPass.admin' ng-hide='admin'>
+                                <button type="submit">login</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="home.signup(userPass)">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Log In modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Log In</button>
+
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Welcome Back!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form ng-submit="home.login(userPass)">
+                          <div class="login">
+                            <form ng-submit="home.login(userPass)">
+                                <input type="text" ng-model="userPass.email" placeholder="email">
+                                <input type="password" ng-model="userPass.password" placeholder="password">
+                                <input type="submit" value="login">
+                            </form>
+                          </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="home.login(userPass)">Let's Hear You</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" name="logout" ng-click='home.logout()'>Log Off!</button>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+
+<script type="text/javascript">
+
+  $stateProvider
+    // **INDEX STATE**
+    .state('index', {
+      url: '/',
+      controller: 'HomeController as home'
+    })
+    // **USER STATES**
+    .state('home', {
+      url: '/home',
+      templateUrl: '/partials/home.html',
+      controller: 'BlogController as blog'
+    })
+    .state('article', {
+      url: 'blog/:article_id', //https://github.com/angular-ui/ui-router/issues/928
+      templateUrl: '/partials/users/article.html',
+      controller: 'BlogController as blog',
+    })
+    // **ADMIN STATES**
+    .state('list', {
+      url: '/admin/articles',
+      templateUrl: '/partials/admin/list.html',
+      controller: 'BlogController as blog'
+    })
+    .state('new',{
+      url: '/new',
+      templateUrl: 'partials/admin/new.html',
+      controller: 'BlogController as blog',
+      parent: 'list'
+    });
+
+</script>
