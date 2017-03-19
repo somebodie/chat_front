@@ -15,7 +15,7 @@
       <!-- When show function runs the following runs -->
       <div ng-repeat='article in blog.blogs' class="articles">
           <div class="article">
-              <a ui-sref="article">{{article.title}}</a> By: {{article.author}}
+              <a ui-sref="article" ng-click='blog.getBlog(article.id)'>{{article.title}}</a> By: {{article.author}}
               <!-- <img ng-src="{{article.media}}" alt="{{article.title}}">
         Body: {{article.body}} -->
           </div>

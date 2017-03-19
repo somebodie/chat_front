@@ -4,16 +4,15 @@ angular.module('ChattyBlog')
 function CommentController($http, $state, $scope, $rootScope) {
     var self = this;
     var server = 'https://still-sea-45460.herokuapp.com';
-    var blog = BlogController.showBlog;
 
-    $scope.on('userLoggedIn', function (event, currentUser) {
-      console.log(currentUser); // 'currentUser'
-      self.currentUser = currentUser;
-    });
-
-    $scope.$on('userLoggedOut', function(event, data) {
-      self.currentUser = null;
-    });
+    // $scope.on('userLoggedIn', function (event, currentUser) {
+    //   console.log(currentUser); // 'currentUser'
+    //   self.currentUser = currentUser;
+    // });
+    //
+    // $scope.$on('userLoggedOut', function(event, data) {
+    //   self.currentUser = null;
+    // });
 
     // TODO: https://toddmotto.com/all-about-angulars-emit-broadcast-on-publish-subscribing/
 

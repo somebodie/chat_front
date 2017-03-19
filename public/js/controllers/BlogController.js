@@ -5,8 +5,7 @@ function BlogController($http, $state, $scope, $rootScope) {
     var self = this;
     var server = 'https://still-sea-45460.herokuapp.com';
     // console.log("LET'S BLOG THIS!");
-    self.blogs = {};
-    // self.update = false; IDEA: hide update until called
+    self.single = [];
 
     $rootScope.$on('adminLoggedIn', function (event, admin) {
       console.log(admin); // 'currentUser'
@@ -18,7 +17,7 @@ function BlogController($http, $state, $scope, $rootScope) {
     self.admin = null;
     });
 
-    showBlog()
+    showBlog();
 
     // blogs GET    /blogs(.:format)                       blogs#index
     function showBlog() {
@@ -49,15 +48,14 @@ function BlogController($http, $state, $scope, $rootScope) {
     }
 
     //   blog GET    /blogs/:id(.:format)                   blogs#show
-    function getBlog(id) {
+    function getBlog(blog_id) {
       console.log('I SEE YOU!');
-      $http.get(`${server}/blogs/${id}`)
+      $http.get(`${server}/blogs/${blog_id}`)
         .then(function (response) {
           console.log(response.data);
-          // self.blogs = response.data
-          // can't use self.blogs
-          // will use for search menu
-            // $state.go('article', {article: response.data}) //FIXME: Make sure information shows on partial
+          self.single = response.data;
+
+          $state.go('article', {article_id: blog_id})
         })
     }
 

@@ -1,15 +1,23 @@
 <!-- <button type="button" name="button" ng-click='blog.showBlog()'>Show</button> -->
 <!-- When show function runs the following runs -->
 <div class="collection">
-  <h1>SLIDE SHOW</h1>
-  <div ng-repeat='article in blog.blogs' class="IMAGES"> <!-- FIXME: To limit to "feature images and links to show" -->
-      <img src="{{article.media}}" alt="{{article.title}}">
-  </div>
-    <div ng-repeat='article in blog.blogs' class="articles">
-        <div class="samples">
-            Title: {{article.title}} By: {{article.author}}
-            <img ng-src="{{article.media}}" alt="{{article.title}}">
-            Written: {{article.created_at}} Updated: {{article.updated_at}} Body: {{article.body}}
+    <h1>SLIDE SHOW</h1>
+    <div ng-repeat='article in blog.blogs' class="IMAGES" | limitTo:>
+        <!-- FIXME: To limit to "feature images and links to show" -->
+        <!-- TODO: https://docs.angularjs.org/api/ng/filter/filter -->
+        <img ng-src="{{article.media}}" alt="{{article.title}}">
+    </div>
+    <label>Search: <input ng-model="searchText"></label>
+    <div id="searchTextResults">
+        <div ng-repeat="article in blog.blogs | filter:searchText">
+            <!-- <div class="articles" ng-repeat='article in blog.blogs'> -->
+            <div class="samples" ng-click='blog.getBlog(article.id)'>
+                Title: {{article.title}} By: {{article.author}}
+                <img ng-src="{{article.media}}" alt="{{article.title}}">
+                Written: {{article.created_at}}
+                Updated: {{article.updated_at}}
+                Body: {{article.body}}
+            </div>
         </div>
     </div>
 </div>

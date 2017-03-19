@@ -13,19 +13,22 @@ function ChatRouter($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/home');
 
   $stateProvider
+    // **INDEX STATE**
     .state('index', {
       url: '/',
       controller: 'HomeController as home'
     })
+    // **USER STATES**
     .state('home', {
       url: '/home',
       templateUrl: '/partials/home.html',
       controller: 'BlogController as blog'
     })
-    .state('blogs', {
-      url: '/blogs',
-      templateUrl: '/partials/users/entry.html',
-      controller: 'CommentController as comments'
+    .state('article', {
+      url: '/:article_id', //https://github.com/angular-ui/ui-router/issues/928
+      templateUrl: '/partials/users/article.html',
+      controller: 'BlogController as blog',
+      parent: 'blogs'
     })
     // **ADMIN STATES**
     .state('list', {
@@ -33,15 +36,10 @@ function ChatRouter($stateProvider, $urlRouterProvider){
       templateUrl: '/partials/admin/list.html',
       controller: 'BlogController as blog'
     })
-    .state('article', {
-      url: '/:id',
-      templateUrl: '/partials/admin/article.html',
+    .state('new',{
+      url: '/new',
+      templateUrl: 'partials/admin/new.html',
       controller: 'BlogController as blog',
       parent: 'list'
-    })
-    .state('new',{
-      url: 'admin/articles/new',
-      templateUrl: 'partials/admin/new.html',
-      controller: 'BlogController as blog'
     })
 }
