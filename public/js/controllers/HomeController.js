@@ -4,7 +4,7 @@ angular.module('ChattyBlog')
 
 function HomeController($http, $state, $scope, $rootScope, AuthTokenFactory, $location) {
     var self = this;
-    var server = 'https://still-sea-45460.herokuapp.com';
+    var server = 'https://chattyblog-back.herokuapp.com/';
     self.control = false; //until admin user.admin is true
     $scope.$location = $location;
 

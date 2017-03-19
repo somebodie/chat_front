@@ -3,7 +3,7 @@ angular.module('ChattyBlog')
 
 function CommentController($http, $state, $scope, $rootScope) {
     var self = this;
-    var server = 'https://still-sea-45460.herokuapp.com';
+    var server = 'https://chattyblog-back.herokuapp.com/';
     console.log("GOT THIS COMMENT TO MAKE!");
 
     $scope.$on('userLoggedIn', function(event, currentUser) {

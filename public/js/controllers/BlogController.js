@@ -3,7 +3,7 @@ angular.module('ChattyBlog')
 
 function BlogController($http, $state, $scope, $rootScope) {
     var self = this;
-    var server = 'https://still-sea-45460.herokuapp.com';
+    var server = 'https://chattyblog-back.herokuapp.com/';
     // console.log("LET'S BLOG THIS!");
 
     $rootScope.$on('adminLoggedIn', function(event, admin) {
