@@ -16,6 +16,8 @@ function BlogController($http, $state, $scope, $rootScope) {
         self.admin = null;
     });
 
+    var blog_id = location.hash.split('/')[3];
+
     // blogs GET    /blogs(.:format)                       blogs#index
     function showBlog() {
         // console.log('SHOWING THIS!');
@@ -42,42 +44,43 @@ function BlogController($http, $state, $scope, $rootScope) {
             .then(function(response) {
                 console.log('I SAVED!');
                 console.log(response);
-                newBlog = {}
             })
+            newBlog = {}
     }
 
     //   blog GET    /blogs/:id(.:format)                   blogs#show
-    function getBlog(id) {
+    function getBlog(blog_id) {
       console.log('I SEE YOU!');
-      $http.get(`${server}/blogs/${id}`)
+      $http.get(`${server}/blogs/${blog_id}`)
         .then(function (response) {
           console.log(response);
+          self.selectedBlog = response.data;
 
-          $state.go('article', {article_id: id})
+          $state.go('article', {article_id: blog_id})
         })
     // } FIXME figure out how to get indiviudal blog to show on page
   }
 
     //        PATCH  /blogs/:id(.:format)                   blogs#update
-    function updateBlog(article) {
+    function updateBlog(currentBlog) {
         console.log("OOPS! LET'S CHANGE THAT");
         // self.update = true; FIXME: make sure that I want to hide
-        console.log(article);
-        self.article = article;
-        $http.patch(`${server}/blogs/${self.article.id}`, {
-                blog: self.article
+        console.log(currentBlog);
+        currentBlog.author = currentBlog.name;
+        currentBlog.user_id = currentBlog.id;
+        $http.patch(`${server}/blogs/${currentBlog.id}`, {
+                blog: currentBlog
             })
             .then(function(response) {
                 console.log(response);
-                console.log('GOT YOU!');
+                console.log('I GOT YOU THIS IS UPDATED!');
             })
-        // FIXME: Make a form to send article
     }
 
     //        DELETE /blogs/:id(.:format)                   blogs#destroy
-    function deleteBlog(id) {
+    function deleteBlog(blog_id) {
         console.log('BYE BLOG!');
-        $http.delete(`${server}/blogs/${id}`)
+        $http.delete(`${server}/blogs/${blog_id}`)
             .then(function(response) {
                 console.log('DELETED!');
             })

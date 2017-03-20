@@ -1,13 +1,6 @@
-<!-- TODO: Should only be accesed by Admin Users ONLY-->
-
-<!-- <br> Blog: {{blog}} -->
-
+<!-- TODO: Should only be accesed by Admin Users ONLY--> <!-- <br> Blog: {{blog}} -->
 <h2>TOTAL BLOG LIST</h2>
-<header>
-    <ul>
-        <li>new</li>
-    </ul>
-</header>
+
 <!-- TODO: to show when page renders (think on date app) https://github.com/ga-students/wdi-remote-matey/tree/09b532e94a1b4f63890885e019c22d95f899c282/unit_04/w12d05/homework_solution -->
 <main>
     <div class="Blogs">
@@ -15,7 +8,7 @@
         <!-- When show function runs the following runs -->
         <div ng-repeat='article in blog.blogs' class="articles">
             <div class="article">
-                <a ui-sref="article" ng-click='blog.getBlog(article.id)'>{{article.title}}</a> By: {{article.author}}
+                <a ui-sref="article" ng-click='blog.getBlog()'>{{article.title}}</a> By: {{article.author}}
                 <!-- <img ng-src="{{article.media}}" alt="{{article.title}}">
         Body: {{article.body}} -->
             </div>
@@ -25,6 +18,3 @@
         </div>
     </div>
 </main>
-<aside class="show">
-    <ui-view></ui-view>
-</aside>

@@ -29,7 +29,7 @@ function ChatRouter($stateProvider, $urlRouterProvider, $locationProvider) {
             controller: 'BlogController as blog',
         })
         .state('article', {
-            url: '/blog/article/:article_id', //https://github.com/angular-ui/ui-router/issues/928
+            url: '/blog/article/:id', //https://github.com/angular-ui/ui-router/issues/928
             templateUrl: '/partials/users/article.html',
             controller: 'BlogController as blog',
         })

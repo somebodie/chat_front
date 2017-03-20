@@ -28,25 +28,26 @@
             <menu ng-controller='BlogController as blog'>
                 <div class="adminsLinks" ng-show='home.control'>
                     <a ui-sref="list">Admin's List</a>
+                    <a ui-sref='new'>New</a>
+                    <a ui-sref="update">Update</a>
                 </div>
                 <label>Search: <input ng-model="searchText"></label>
                 <!-- TODO: SEARCH BAR: https://docs.angularjs.org/api/ng/filter/filter -->
                 <div id="searchTextResults">
                     <div ng-repeat="article in blog.blogs | filter:searchText">
-                      <p>Title {{article.title}}</p>
-                      <p>Author {{article.author}}</p>
+                      <span ng-click='blog.getBlog()'> {{article.title}} by {{article.author}}</span>
                       <!-- FIXME: get blog on selection -->
+                      <!-- <menuitem type="command" label="Save"> -->
                     </div>
                 </div>
-                <menuitem type="command" label="Save">
             </menu>
             </button>
         </nav>
     </header>
     <main>
-        <h1>PARTIAL BELOW</h1>
+
         <ui-view></ui-view>
-        <h1>PARITAL ABOVE</h1>
+
         <h1>SIGN UP</h1>
     </main>
     <footer>
