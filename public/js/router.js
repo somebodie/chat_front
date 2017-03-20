@@ -21,35 +21,29 @@ function ChatRouter($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('home', {
             url: '/home',
             templateUrl: '/partials/home.html',
-            controller: 'BlogController as blog',
         })
         .state('blogs', {
             url: '/blog',
             templateUrl: '/partials/users/blog.html',
-            controller: 'BlogController as blog',
         })
         .state('article', {
-            url: '/blog/article/:id', //https://github.com/angular-ui/ui-router/issues/928
+            url: '/blog/article/:article_title', //https://github.com/angular-ui/ui-router/issues/928
             templateUrl: '/partials/users/article.html',
-            controller: 'BlogController as blog',
         })
         // **ADMIN STATES**
         .state('admin', {
             url: '/admin',
             templateUrl: '/partials/admin/admin.html',
-            controller: 'BlogController as blog'
         })
         .state('new', {
             url: '/new',
             templateUrl: 'partials/admin/new.html',
-            controller: 'BlogController as blog',
-            parent: 'list'
+            // parent: 'list'
         })
         .state('update', {
             url: '/update',
             templateUrl: 'partials/admin/update.html',
-            controller: 'BlogController as blog',
-            parent: 'list'
+            // parent: 'list'
         });
 
     $locationProvider.html5Mode({

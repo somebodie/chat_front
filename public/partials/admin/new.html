@@ -1,6 +1,6 @@
 <!-- TODO: Parent view is list -->
 
-<div class="newBlog">
+<div class="newBlog" ng-controller='BlogController as blog'>
     <form class="newBlog" ng-submit='blog.createBlog(newBlog)'>
         <input type="text" ng-model='newBlog.title' placeholder="title" required>
         <textarea ng-model='newBlog.body' rows="40" cols="100"></textarea>

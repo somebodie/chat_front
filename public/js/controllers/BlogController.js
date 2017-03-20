@@ -49,14 +49,15 @@ function BlogController($http, $state, $scope, $rootScope) {
     }
 
     //   blog GET    /blogs/:id(.:format)                   blogs#show
-    function getBlog(blog_id) {
+    function getBlog(blog) {
       console.log('I SEE YOU!');
-      $http.get(`${server}/blogs/${blog_id}`)
+      console.log(blog);
+      $http.get(`${server}/blogs/${blog.id}`)
         .then(function (response) {
           console.log(response);
           self.selectedBlog = response.data;
 
-          $state.go('article', {article_id: blog_id})
+          $state.go('article', {article_title: blog.title})
         })
     // } FIXME figure out how to get indiviudal blog to show on page
   }
@@ -92,7 +93,7 @@ function BlogController($http, $state, $scope, $rootScope) {
 
     self.showBlog = showBlog;
     self.createBlog = createBlog;
-    // self.getBlog = getBlog;
+    self.getBlog = getBlog;
     self.updateBlog = updateBlog;
     self.deleteBlog = deleteBlog;
 }

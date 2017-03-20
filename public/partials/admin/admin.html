@@ -3,7 +3,7 @@
 
 <!-- TODO: to show when page renders (think on date app) https://github.com/ga-students/wdi-remote-matey/tree/09b532e94a1b4f63890885e019c22d95f899c282/unit_04/w12d05/homework_solution -->
 <main>
-    <div class="Blogs">
+    <div class="Blogs" ng-controller='BlogController as blog'>
         <!-- <button type="button" name="button" ng-click='blog.showBlog()'>Show</button> -->
         <!-- When show function runs the following runs -->
         <div ng-repeat='article in blog.blogs' class="articles">

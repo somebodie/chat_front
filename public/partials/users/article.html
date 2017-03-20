@@ -1,5 +1,17 @@
 <h3>SHOW INDIVIDUAL BLOG HERE</h3>
 
+<div class="blog" ng-controller='BlogController as blog'>
+  <div ng-repeat='blog in blog.selectedBlog'>
+    <div>
+      {{blog.title}} by {{blog.author}}
+    </div>
+    <div>
+      {{blog.body}}
+    </div>
+  </div>
+</div>
+
+{{blog.selectedBlog}}
 <!-- TODO: <button ng-show='home.control' type="button" name="button" ng-click='blog.update=!blog.update'>SHOW Update</button> -->
 
 <div class="comments" ng-controller='CommentController as comment'>

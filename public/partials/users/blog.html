@@ -1,9 +1,9 @@
 <!-- ALL THE BLOGS -->
-<div class="blogs">
+<div class="blogs" ng-controller='BlogController as blog'>
     <label>Search: <input ng-model="searchText"></label>
     <div id="searchTextResults">
         <div class="articles" ng-repeat="article in blog.blogs | filter:searchText">
-            <div class="samples" ng-click='blog.getBlog()'>
+            <div class="samples" ng-click='blog.getBlog(article)'>
                 Title: {{article.title}} By: {{article.author}} <br>
                 Written: {{article.created_at}} Updated: {{article.updated_at}} <br>
                 <img ng-src="{{article.media}}" alt="{{article.title}}">
