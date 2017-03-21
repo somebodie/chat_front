@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/somebodie/chat_front#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "materialize-css": "^0.98.0"
   }
 }

@@ -27,7 +27,7 @@ function ChatRouter($stateProvider, $urlRouterProvider, $locationProvider) {
             templateUrl: '/partials/users/blog.html',
         })
         .state('article', {
-            url: '/blog/article/:article_title', //https://github.com/angular-ui/ui-router/issues/928
+            url: '/blog/article/:article_id', //https://github.com/angular-ui/ui-router/issues/928
             templateUrl: '/partials/users/article.html',
         })
         // **ADMIN STATES**

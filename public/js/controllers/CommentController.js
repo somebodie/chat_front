@@ -5,6 +5,7 @@ function CommentController($http, $state, $scope, $rootScope) {
     var self = this;
     var server = 'https://chattyblog-back.herokuapp.com';
     console.log("GOT THIS COMMENT TO MAKE!");
+    self.comments = {};
 
     $scope.$on('userLoggedIn', function(event, currentUser) {
         console.log(currentUser); // 'currentUser'
@@ -36,6 +37,7 @@ function CommentController($http, $state, $scope, $rootScope) {
         $http.post(`${server}/blogs/${blog_id}/comments`)
             .then(function(response) {
                 console.log(response);
+            // res.json(self.comments)
             })
     }
 

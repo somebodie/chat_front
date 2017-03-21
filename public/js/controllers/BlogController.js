@@ -5,8 +5,8 @@ function BlogController($http, $state, $scope, $rootScope) {
     var self = this;
     var server = 'https://chattyblog-back.herokuapp.com/';
     // console.log("LET'S BLOG THIS!");
-    self.selectedBlog = {author: 'Audrey'};
-    self.testMessage = 'TESTING'
+    // self.selectedBlog = {author: 'Audrey'};
+    // self.testMessage = 'TESTING'
 
     $rootScope.$on('adminLoggedIn', function(event, admin) {
         console.log(admin); // 'currentUser'
@@ -17,8 +17,6 @@ function BlogController($http, $state, $scope, $rootScope) {
     $scope.$on('userLoggedOut', function(event, data) {
         self.admin = null;
     });
-
-    var blog_id = location.hash.split('/')[3];
 
     // blogs GET    /blogs(.:format)                       blogs#index
     function showBlog() {
@@ -54,16 +52,13 @@ function BlogController($http, $state, $scope, $rootScope) {
     function getBlog(blog) {
       console.log('I SEE YOU!');
       console.log(blog);
-      self.selectedBlog = blog;
-      console.log(self.selectedBlog);
-      // $http.get(`${server}/blogs/${blog.id}`)
-      //   .then(function (response) {
-      //     console.log(response);
-      //     self.selectedBlog = response.data;
-      //
-      //     $state.go('article', {article_title: blog.title})
-      //   })
-    // } FIXME figure out how to get indiviudal blog to show on page
+      $http.get(`${server}/blogs/${blog.id}`)
+        .then(function (response) {
+          console.log(response);
+          self.selectedBlog = response.data;
+
+          $state.go('article', {article_id: blog.id})
+        })
   }
 
     //        PATCH  /blogs/:id(.:format)                   blogs#update

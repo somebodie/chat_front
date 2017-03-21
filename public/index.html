@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="utf-8">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chatty Blog</title>
     <!-- Angular Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
@@ -19,61 +21,69 @@
     <script src='js/controllers/CommentController.js'></script>
     <!-- App -->
     <script src="js/app.js"></script>
+    <!-- FONT -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
 </head>
 
-<body ng-controller='HomeController as home'>
-    <div ng-controller="BlogController as blog">
-      <header>
-        <nav>
-            <ul >
-                <ul class="adminsLinks" ng-show='home.control'>
-                    <li ui-sref="list">Admin's List</li>
-                    <li ui-sref='new'>New</li>
-                    <li ui-sref="update">Update</li>
-                </ul>
-                <label>Search: <input ng-model="searchText"></label>
-                <!-- TODO: SEARCH BAR: https://docs.angularjs.org/api/ng/filter/filter -->
-                <div id="searchTextResults">
-                    <ul ng-repeat="article in blog.blogs | filter:searchText">
-                        <li ng-click='blog.getBlog(article)'> {{article.title}} by {{article.author}}</li>
-                        <!-- FIXME: get blog on selection -->
-                        <!-- <menuitem type="command" label="Save"> -->
+<body class="container" ng-controller='HomeController as home'>
+    <div class="row" ng-controller="BlogController as blog">
+        <header class="one-half column" style="margin-top: 25%">
+            <nav>
+                <ul>
+                    <ul class="adminsLinks" ng-show='home.control'>
+                        <li ui-sref="list">Admin's List</li>
+                        <li ui-sref='new'>New</li>
+                        <li ui-sref="update">Update</li>
                     </ul>
-                </div>
-            </ul>
-        </nav>
-    </header>
-    <main>
+                    <label>Search: <input ng-model="searchText"></label>
+                    <!-- TODO: SEARCH BAR: https://docs.angularjs.org/api/ng/filter/filter -->
+                    <div id="searchTextResults">
+                        <ul ng-repeat="article in blog.blogs | filter:searchText">
+                            <li ng-click='blog.getBlog(article)'> {{article.title}} by {{article.author}}</li>
+                            <!-- FIXME: get blog on selection -->
+                            <!-- <menuitem type="command" label="Save"> -->
+                        </ul>
+                    </div>
+                </ul>
+            </nav>
+        </header>
+        <main>
 
-        <ui-view></ui-view>
+            <ui-view></ui-view>
 
-        <h1>SIGN UP</h1>
-    </main>
-    <footer>
-        <div class="signup">
-            <form ng-submit="home.signup(userPass)">
-                <input type="text" ng-model="userPass.name" placeholder="name">
-                <input type="text" ng-model="userPass.user_name" placeholder="user name">
-                <input type="email" ng-model="userPass.email" placeholder="email">
-                <input type="password" ng-model="userPass.password" placeholder="password">
-                <input type="checkbox" ng-model='userPass.admin' ng-hide='admin'>
-                <button type="submit">login</button>
-            </form>
-        </div>
+            <h1>SIGN UP</h1>
+        </main>
+        <footer>
+            <div class="signup">
+                <form ng-submit="home.signup(userPass)">
+                    <input type="text" ng-model="userPass.name" placeholder="name">
+                    <input type="text" ng-model="userPass.user_name" placeholder="user name">
+                    <input type="email" ng-model="userPass.email" placeholder="email">
+                    <input type="password" ng-model="userPass.password" placeholder="password">
+                    <input type="checkbox" ng-model='userPass.admin' ng-show='home.control'>
+                    <button type="submit">login</button>
+                </form>
+            </div>
 
-        <h1>LOG IN</h1>
-        <div class="login">
-            <form ng-submit="home.login(userPass)">
-                <input type="text" ng-model="userPass.email" placeholder="email">
-                <input type="password" ng-model="userPass.password" placeholder="password">
-                <input type="submit" value="login">
-            </form>
-        </div>
+            <h1>LOG IN</h1>
+            <div class="login">
+                <form ng-submit="home.login(userPass)">
+                    <input type="text" ng-model="userPass.email" placeholder="email">
+                    <input type="password" ng-model="userPass.password" placeholder="password">
+                    <input type="submit" value="login">
+                </form>
+            </div>
 
-        <h1>LOG OUT</h1>
-        <button type="button" name="logout" ng-click='home.logout()'>Log Off!</button>
-    </div> 
+            <h1>LOG OUT</h1>
+            <button type="button" name="logout" ng-click='home.logout()'>Log Off!</button>
+    </div>
+    </footer>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
-</footer>
 
 </html>
