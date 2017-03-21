@@ -1,6 +1,6 @@
 <!-- <button type="button" name="button" ng-click='blog.showBlog()'>Show</button> -->
 <!-- When show function runs the following runs -->
-<div class="collection">
+<div class="collection" ng-controller='BlogController as blog'>
     <h1>SLIDE SHOW</h1>
     <div ng-repeat='article in blog.blogs' class="IMAGES" | limitTo:>
         <!-- FIXME: To limit to "feature images and links to show" -->

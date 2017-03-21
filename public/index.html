@@ -22,9 +22,10 @@
 </head>
 
 <body ng-controller='HomeController as home'>
-    <header>
+    <div ng-controller="BlogController as blog">
+      <header>
         <nav>
-            <ul ng-controller='BlogController as blog'>
+            <ul >
                 <ul class="adminsLinks" ng-show='home.control'>
                     <li ui-sref="list">Admin's List</li>
                     <li ui-sref='new'>New</li>
@@ -71,6 +72,7 @@
 
         <h1>LOG OUT</h1>
         <button type="button" name="logout" ng-click='home.logout()'>Log Off!</button>
+    </div> 
 </body>
 </footer>
 
