@@ -89,6 +89,7 @@ function BlogController($http, $state, $scope, $rootScope) {
     }
 
     showBlog();
+    self.selectedBlog;
 
     self.showBlog = showBlog;
     self.createBlog = createBlog;
