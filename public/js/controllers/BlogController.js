@@ -10,7 +10,7 @@ function BlogController($http, $state, $scope, $rootScope) {
     $rootScope.$on('adminLoggedIn', function(event, admin) {
         console.log(admin); // 'currentUser'
         self.admin = admin.admin;
-         console.log(currentAdmin);
+        //  console.log(currentAdmin);
     });
 
     $scope.$on('userLoggedOut', function(event, data) {
