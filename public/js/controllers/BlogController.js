@@ -5,7 +5,6 @@ function BlogController($http, $state, $scope, $rootScope) {
     var self = this;
     var server = 'https://chattyblog-back.herokuapp.com/';
     // console.log("LET'S BLOG THIS!");
-    // self.selectedBlog = {author: 'Audrey'};
     // self.testMessage = 'TESTING'
 
     $rootScope.$on('adminLoggedIn', function(event, admin) {
