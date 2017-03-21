@@ -10,7 +10,7 @@ ChatRouter.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider
 
 function ChatRouter($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider
         // **INDEX STATE**
@@ -18,10 +18,10 @@ function ChatRouter($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/',
         })
         // **USER STATES**
-        .state('home', {
-            url: '/home',
-            templateUrl: '/partials/home.html',
-        })
+        // .state('home', {
+        //     url: '/home',
+        //     templateUrl: '/partials/home.html',
+        // })
         .state('blogs', {
             url: '/blog',
             templateUrl: '/partials/users/blog.html',
