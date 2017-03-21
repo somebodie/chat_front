@@ -57,7 +57,7 @@
 
         </main>
         <footer>
-          <h1>SIGN UP</h1>
+          <h2>SIGN UP</h2>
             <div class="signup">
                 <form ng-submit="home.signup(userPass)">
                     <input type="text" ng-model="userPass.name" placeholder="name">
@@ -69,7 +69,7 @@
                 </form>
             </div>
 
-            <h1>LOG IN</h1>
+            <h2>LOG IN</h2>
             <div class="login">
                 <form ng-submit="home.login(userPass)">
                     <input type="text" ng-model="userPass.email" placeholder="email">
@@ -78,7 +78,7 @@
                 </form>
             </div>
 
-            <h1>LOG OUT</h1>
+            <h2>LOG OUT</h2>
             <button type="button" name="logout" ng-click='home.logout()'>Log Off!</button>
     </div>
     </footer>
