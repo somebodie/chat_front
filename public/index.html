@@ -54,9 +54,9 @@
 
             <ui-view></ui-view>
 
-            <h1>SIGN UP</h1>
         </main>
         <footer>
+          <h1>SIGN UP</h1>
             <div class="signup">
                 <form ng-submit="home.signup(userPass)">
                     <input type="text" ng-model="userPass.name" placeholder="name">
@@ -64,7 +64,7 @@
                     <input type="email" ng-model="userPass.email" placeholder="email">
                     <input type="password" ng-model="userPass.password" placeholder="password">
                     <input type="checkbox" ng-model='userPass.admin' ng-show='home.control'>
-                    <button type="submit">login</button>
+                    <button type="submit">Sign Up</button>
                 </form>
             </div>
 
