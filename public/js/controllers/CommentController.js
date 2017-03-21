@@ -24,7 +24,7 @@ function CommentController($http, $state, $scope, $rootScope) {
     // blog_comments GET    /blogs/:blog_id/comments(.:format)     comments#index
     function getComments(blog_id) {
         console.log('GETTING COMMENTS');
-        var blog.id = blog_id;
+        blog_id = blog.id
         $http.get(`${server}/blogs/${blog.id}/comments`)
             .then(function(response) {
                 console.log(response);
