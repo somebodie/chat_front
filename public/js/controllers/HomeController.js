@@ -36,7 +36,7 @@ function HomeController($http, $state, $scope, $rootScope, AuthTokenFactory, $lo
         $scope.$emit('userLoggedOut');
         console.log('logged off');
         self.control = false;
-        $state.go('home')
+        $state.go('index')
     }
 
     function signup(userPass) {
